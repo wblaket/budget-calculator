@@ -1,7 +1,8 @@
-<!DOCTYPE! html>
+<!DOCTYPE	html>
 <html lang="en">
 <head>
 	<link rel="stylesheet" href="style.css">
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <!-- 	<script src="addExpense_v2.js">
 	</script> -->
 	<title>Personal Expense Calculator</title>
@@ -9,116 +10,76 @@
 
 <body>
 	<h1 class="header">Personal Expense Tracker</h1>
+	<div id="grid-container">
+		<div id="grid-item1">
+			<!--------------- EXPENSE INPUT  --------------->
+			<h2>Add your expenses:</h2>
+			<form>
+				<label for="expenseName">Name:</label>
+				<input type="text" id="expenseName" placeholder="Internet bill" required>
 
-	<div>
-	<p id="description">Enter your expenses below and see how they add up every week, month, and year. </p>
-	</div>
+				<label for="totalCost">Cost:</label>
+				<input type="number" id="expenseCost" required>
 
-	<form>
-		<label for="expenseName">Name of expense:</label>
-		<input type="text" id="expenseName" placeholder="Internet bill" style="width:8%" required>
+				<p>Reoccurence:
+					<input type="radio" id="monthly" name="recurring" value= "monthly" checked>
+					<label for="no">Monthly</label>
 
-		<label for="totalCost">Cost:</label>
-		<input type="number" id="expenseCost" style="width:4%" required>
+					<input type="radio" id="yearly" name="recurring" value= "yearly">
+					<label for="no">Yearly</label>
+				</p>
+				<button type="button" onclick="addExpense()">Submit</button>
+			</form>
 
-		<p>Reoccurence:
+			<!------------ MONTHLY and YEARLY Income Calculator --------------->
+			<h2>Calculate your remaining income:</h2>
+			<form class="calculatorForm">
 
+				<label for="monthlyIncome">Monthly Income:</label>
+				<input type="number" id="monthlyIncome">
 
-			<input type="radio" id="monthly" name="recurring" value= "monthly" checked>
-			<label for="no">Monthly</label>
+				<button type="button" onclick="calculateMonthlyCost()">Calculate</button>
+				<p>Remaining Income:</p>
+				<p id="remainingMonthlyIncome"></p>
 
-			<input type="radio" id="yearly" name="recurring" value= "yearly">
-			<label for="no">Yearly</label>
-		</p>
+				<label for="yearlyIncome">Yearly Income:</label>
+				<input type="number" id="yearlyIncome">
 
-		<button type="button" onclick="addExpense()">Submit</button>
-	</form>
+				<button type="button" onclick="calculateAnnualSalary()">Calculate</button>
+				<p>Remaining Income:</p>
+				<p id="remainingYearlyIncome"></p>
+			</form>
 
+			<div id="expense-breakdown">
+				<h3>Your Monthly Expenses at a Glance:</h3>
+				<p>Total number of monthly expenses: <span id="displayNumOfMonthlyExpenses">0</span></p>
+				<p>Total $$$ amount of monthly expenses: <span id="displayMonthlyCost2">$0</span></p>
+				<p>Your most expensive monthly expense: <span id="displayMostExpensiveMonthlyItem">$0</span></p>
 
-		<div>
-		<table id="expenseTable" class="table1">
-			<tr>
-				<th>Expense</th>
-				<th>Cost</th>
-				<th>Reoccurence</th>
-			</tr>
-		</table>
+				<h3>Your Yearly Expenses at a Glance:</h3>
+				<p>Total number of yearly expenses: <span id="displayNumOfYearlyExpenses">0</span></p>
+				<p>Total $$$ amount of yearly expenses: <span id ="displayYearlyCost2">$0</span></p>
+				<p>Your most expensive yearly expense: <span id="displayMostExpensiveYearlyItem">$0</span></p>
+
+				<h3>Total of All Expenses:</h3>
+				<p>Total number of expenses: <span id="totalNumberOfExpenses">0</span></p>
+				<p>Total $$ amount of all expenses: <span id="displayTotalExpenses">$0</span></p>
+			</div>
 		</div>
 
+		<div id="grid-item2">
+			<table id="expenseTable">
+				<tr>
+					<th>Expense</th>
+					<th>Cost</th>
+					<th>Reoccurence</th>
+				</tr>
+			</table>
+		</div>
 
-
-
-	<div>
-		<table class="table2">
-
-			<tr>
-				<th class="table2" colspan="2">Your Monthly Expenses at a Glance </th>
-			<tr>
-				<td class="table2">Total number of monthly expenses:</td>
-				<td class="table2" id="displayNumOfMonthlyExpenses">0</rd>
-			</tr>
-			<tr>
-				<td class="table2">Total $$$ amount of monthly expenses:</td>
-				<td class="table2" id="displayMonthlyCost2">$0</td>
-			</tr>
-			<tr>
-				<td class="table2">Your most expensive monthly expense:</td>
-				<td class="table2" id="displayMostExpensiveMonthlyItem">$0</td>
-			</tr>
-			<tr>
-				<th class="table2" colspan="2">Your Yearly Expenses at a Glance</th>
-			</tr>
-			<tr>
-				<td class="table2">Total number of yearly expenses:</td>
-				<td class="table2" id="displayNumOfYearlyExpenses">0</td>
-			</tr>
-			<tr>
-				<td class="table2">Total $$$ amount of yearly expenses:</td>
-				<td class="table2" id ="displayYearlyCost2">$0</td>
-			</tr>
-			<tr>
-				<td class="table2">Your most expensive yearly expense:</td>
-				<td class="table2" id="displayMostExpensiveYearlyItem">$0</td>
-			</tr>
-
-			<tr>
-				<th class="table2" colspan="2">Total of All Expenses:</td>
-			</tr>
-				<td class="table2">Total number of expenses:</td>
-				<td class="table2" id="totalNumberOfExpenses">0</td>
-
-			<tr>
-				<td class="table2">Total $$ amount of all expenses:</td>
-				<td class="table2" id="displayTotalExpenses">$0</td>
-			</tr>
-
-
-		</table>
 	</div>
-
-	<form class="calculatorForm">
-
-		<label for="monthlyIncome">Monthly Income:</label>
-		<input type="number" id="monthlyIncome">
-
-		<button type="button" onclick="calculateMonthlyCost()">Calculate</button>
-		<p>Remaining Income:</p>
-		<p id="remainingMonthlyIncome"></p>
-
-
-		<label for="yearlyIncome">Yearly Income:</label>
-		<input type="number" id="yearlyIncome">
-
-		<button type="button" onclick="calculateAnnualSalary()">Calculate</button>
-		<p>Remaining Income:</p>
-		<p id="remainingYearlyIncome"></p>
-
-
-	</form>
-
 	<script src="addExpense_v4.js">
 	</script>
-
 </body>
 
 </html>
