@@ -44,16 +44,31 @@ th {
 	padding:10px;
 }
 
-#expense-breakdown {
+#expense-breakdown-section {
 	padding: 5px;
 	width: auto;
 	font-size:20px;
 	color:white;
 }
 
+.expense-breakdown {
+	background:#8EA8C3;
+	padding-left:10px;
+	padding-top:0px;
+
+}
+
+h2 {
+ margin-top:0;
+
+}
 h3 {
 	margin-top: 0;
+	margin-bottom: 5px;
 	color:#65DEF1;
+}
+small {
+	color:white;
 }
 
 /* Form Styles:
@@ -63,6 +78,7 @@ form {
 	background: #8EA8C3;
 	color:white;
 	padding:10px;
+	margin-bottom: 10px;
 }
 button {
 	margin-top:5px;
@@ -82,13 +98,6 @@ button {
 /* Grid Styles:
 ----------------------------------- */
 
-#grid-container {
-	display:grid;
-	grid-template-columns: 1fr 1fr;
-	margin-left:25%;
-	margin-right: 25%;
-	column-gap: 5%;
-}
 
 #grid-item1 {
 	align-items: center;
@@ -98,4 +107,19 @@ button {
 
 #expenseTable {
 	margin-top: 0;
+}
+
+/* Dynamic
+------------------------------------ */
+@media screen and (min-width:1000px) {
+
+	#grid-container {
+		display:grid;
+		grid-template-columns: 1fr 1fr;
+		margin-left:25%;
+		margin-right: 25%;
+		column-gap: 5%;
+	}
+
+
 }
