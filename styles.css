@@ -14,10 +14,11 @@ https://coolors.co/65def1-a8dcd1-dce2c8-f96900-f17f29
 body {
 	background:#406E8E;
 	color:#65DEF1;
+	font-family: 'Source Serif Pro', serif;
 }
 
 .header {
-	font-size:80px;
+	font-size:70px;
 	text-align:center;
 	color: #23395B;
 	background:#CBF7ED ;
@@ -35,7 +36,7 @@ table {
 
 td {
 	border: 1px solid black;
-	font-family:Candara;
+	text-align: center;
 }
 
 th {
